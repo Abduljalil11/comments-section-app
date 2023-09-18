@@ -23,11 +23,12 @@ export const CommentProvider = ({children}) => {
     //       for(let i=0; i<comments.length; i++){
     //        comments[i].replies = comments[i].replies.filter((item) => item.id!==id)
     //       }
-    //       console.log(id)
-    //      setComments(comments.filter((item) => item.id!==id))
+    
+    //      setComments(prev => comments.filter((item) => item.id!==id));
     //      mainBody.style.filter = "brightness(1)";
     //      mainBody.style.backgroundColor = "transparent";
     //      modal.style.display = "none" ;
+    //      console.log(comments)
     //      return
     //    })
 
@@ -37,11 +38,13 @@ export const CommentProvider = ({children}) => {
     //      modal.style.display = "none" ;
     //      return
     //    })
-       
-    //  }
+    //    console.log(comments)
+    //   }
+
+      
 
     const deleteComment = (id) => {
-      if(window.confirm("are you sure you want to delete?")){
+      if(window.confirm("Are you sure you want to delete?")){
         for(let i=0; i<comments.length; i++){
                 comments[i].replies = comments[i].replies.filter((item) => item.id!==id)
         }
@@ -210,14 +213,11 @@ export const CommentProvider = ({children}) => {
     }
     
     const handleVote = (e) => {
-      if(e.target.matches(".minus") || e.target.matches(".minus-on") || e.target.matches(".plus") || e.target.matches(".plus-on")){
-        return
-      }
-      if(e.target.closest(".plus") || e.target.closest(".plus-on")){   
-        var vote = e.target.parentElement.parentElement.children[1];
+      if(e.currentTarget.className === "plus" || e.currentTarget.className === "plus-on"){   
+        var vote = e.currentTarget.parentElement.children[1];
         let counter = parseInt(vote.innerText);
         let dislike_state = false ;
-        if(e.target.parentElement.parentElement.children[2].className === "minus-on") {
+        if(e.currentTarget.parentElement.children[2].className === "minus-on") {
             dislike_state = true ;
         }
         else {
@@ -225,28 +225,28 @@ export const CommentProvider = ({children}) => {
         }
         if (dislike_state) {
             counter += 2;
-            e.target.parentElement.parentElement.children[2].className = 'minus'
+            e.currentTarget.parentElement.children[2].className = 'minus'
             vote.innerText = counter
-            e.target.parentElement.className = 'plus-on'
+            e.currentTarget.className = 'plus-on'
         }
         else {
-            if (e.target.parentElement.className === 'plus') {
-                e.target.parentElement.className = "plus-on" ;
+            if (e.currentTarget.className === 'plus') {
+                e.currentTarget.className = "plus-on" ;
                 counter += 1;
                 vote.innerText = counter
             }
             else {
-                e.target.parentElement.className = "plus"
+                e.currentTarget.className = "plus"
                 counter += -1;
                 vote.innerText = counter
             }
          }
       }
-      if(e.target.closest(".minus") || e.target.closest(".minus-on")){   
-        var vote = e.target.parentElement.parentElement.children[1];
+      if(e.currentTarget.className === "minus" || e.currentTarget.className === "minus-on"){   
+        var vote = e.currentTarget.parentElement.children[1];
         let counter = parseInt(vote.innerText);
         let like_state = false ;
-        if(e.target.parentElement.parentElement.children[0].className === "plus-on") {
+        if(e.currentTarget.parentElement.children[0].className === "plus-on") {
             like_state = true ;
         }
         else {
@@ -254,18 +254,18 @@ export const CommentProvider = ({children}) => {
         }
         if (like_state) {
             counter += -2;
-            e.target.parentElement.parentElement.children[0].className = 'plus'
+            e.currentTarget.parentElement.children[0].className = 'plus'
             vote.innerText = counter
-            e.target.parentElement.className = 'minus-on'
+            e.currentTarget.className = 'minus-on'
         }
         else {
-            if (e.target.parentElement.className === 'minus') {
-                e.target.parentElement.className = "minus-on" ;
+            if (e.currentTarget.className === 'minus') {
+                e.currentTarget.className = "minus-on" ;
                 counter += -1;
                 vote.innerText = counter
             }
             else {
-                e.target.parentElement.className = "minus"
+                e.currentTarget.className = "minus"
                 counter += 1;
                 vote.innerText = counter
             }

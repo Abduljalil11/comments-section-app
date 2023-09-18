@@ -7,12 +7,8 @@ import ReplyForm2 from "./ReplyForm2"
 
 function Comment({user}) {
 
-  const {deleteComment} = useContext(CommentContext)
-  const {clickReply} = useContext(CommentContext)
-  const {handleVote} = useContext(CommentContext)
-  const {editComment} = useContext(CommentContext)
-  const {updateComment} = useContext(CommentContext)
-
+  const {deleteComment, clickReply, handleVote, editComment, updateComment} = useContext(CommentContext)
+  
   const {calculateTimeSinceComment} = useContext(CommentContext)
   const [timeSinceComment, setTimeSinceComment] = useState(calculateTimeSinceComment(user.timestamp));  
 
@@ -43,12 +39,12 @@ function Comment({user}) {
               {user.user.username == "juliusomo" && <button onClick={() => updateComment(user.id, user.content)} className={`update ${user.id}`}>UPDATE</button>}
             </div>
         </div>
-        <div className="vote" onClick={(e) => handleVote(e)}>
-            <div className="plus">
+        <div className="vote">
+            <div className="plus" onClick={(e) => handleVote(e)}>
               <img src="images/icon-plus.svg" />
             </div>
               <p>{user.score}</p>
-            <div className="minus">
+            <div className="minus" onClick={(e) => handleVote(e)}>
               <img src="images/icon-minus.svg" />
             </div>
         </div>

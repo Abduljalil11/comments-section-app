@@ -18,7 +18,7 @@ function ReplyForm({user}) {
 
       content: content,
       createdAt: "just now",
-      timestamp: new Date(),
+      timestamp: new Date().getTime(),
       score: 0,
       user: {
         image: { 

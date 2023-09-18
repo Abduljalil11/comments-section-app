@@ -11,6 +11,7 @@ function Comments() {
     <>
         <AnimatePresence>
           {comments.map((user)=>(
+            user.length === undefined &&
               <motion.div 
                 key={user.id}
                 initial={{opacity: 0}}

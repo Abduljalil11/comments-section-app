@@ -2,11 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import CommentContext from "../context/commentContext"
 
 function Reply({user}) {
-  const {deleteComment} = useContext(CommentContext)
-  const {clickReply} = useContext(CommentContext)
-  const {handleVote} = useContext(CommentContext)
-  const {editComment} = useContext(CommentContext)
-  const {updateReply} = useContext(CommentContext)
+  const {deleteComment, clickReply, handleVote, editComment, updateReply} = useContext(CommentContext)
 
   const {calculateTimeSinceComment} = useContext(CommentContext)
   const [timeSinceComment, setTimeSinceComment] = useState(calculateTimeSinceComment(user.timestamp));  
@@ -37,12 +33,12 @@ function Reply({user}) {
               {user.user.username == "juliusomo" && <button onClick={() => updateReply(user.id, user.content, user.replyingTo)} className={`update ${user.id}`}>UPDATE</button>}
             </div>
         </div>
-        <div className="vote" onClick={(e) => handleVote(e)}>
-            <div className="plus">
+        <div className="vote">
+            <div className="plus" onClick={(e) => handleVote(e)}>
               <img src="images/icon-plus.svg" />
             </div>
               <p>{user.score}</p>
-            <div className="minus">
+            <div className="minus" onClick={(e) => handleVote(e)}>
               <img src="images/icon-minus.svg" />
             </div>
         </div>
