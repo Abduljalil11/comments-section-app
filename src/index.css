@@ -128,6 +128,7 @@ article{
   justify-content: center;
   margin-right: 0em;
 }
+
 .minus{
   padding:0.8em 0.6em;
   display:flex;
@@ -256,18 +257,26 @@ form > div{
 /*hover states*/
 .reply:hover, .edit:hover{
   opacity: 0.5;
+  cursor: pointer;
 }
 .bottom > button:hover, .update:hover{
   background-color:#C9CBF2;
+  cursor: pointer;
 }
 #confirmDelete:hover{
   background-color:#FFCBD5;
+  cursor: pointer;
 }
 #cancel:hover{
   background-color:#B7BCC0;
+  cursor: pointer;
 }
 .delete:hover{
   opacity: 0.5;
+  cursor: pointer;
+}
+.plus:hover, .minus:hover, .plus-on:hover, .minus-on:hover{
+  cursor: pointer;
 }
 
 /*modal section*/
