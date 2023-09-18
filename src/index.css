@@ -255,7 +255,7 @@ form > div{
 
 /*hover states*/
 .reply:hover, .edit:hover{
-  color:#C9CBF2;
+  opacity: 0.5;
 }
 .bottom > button:hover, .update:hover{
   background-color:#C9CBF2;
@@ -267,7 +267,7 @@ form > div{
   background-color:#B7BCC0;
 }
 .delete:hover{
-  color:#FFCBD5;
+  opacity: 0.5;
 }
 
 /*modal section*/
